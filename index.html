@@ -14,6 +14,26 @@
     </script>
 </head>
 <body>
+    <a href="tel:01000000000"  onclick="trackAndCall(event, '0324392755')">전화걸기</a>
+   <script type="text/javascript">
+    function trackAndCall(event, phoneNumber) {
+        // 기본 동작 중단
+        event.preventDefault();
+
+        // 데이터 수집 로직
+        if (window.wcs) {
+            wcs.inflow("https://j-yujin97.github.io/naveranaly/"); 
+            var _conv = {};
+            _conv.type = "mtel"; 
+            wcs.trans(_conv); // 전환 데이터 전송
+        }
+
+        // 전화 연결
+        setTimeout(() => {
+            window.location.href = `tel:${phoneNumber}`;
+        }, 500); // 데이터 전송 후 0.5초 후 전화 연결
+    }
+</script>
     
 </body>
 </html>
